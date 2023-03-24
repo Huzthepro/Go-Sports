@@ -39,7 +39,6 @@ export const PlayerContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(playerReducer, {
     player: null,
   });
-  console.log("PlayerContext state:", state);
   return (
     <PlayerContext.Provider value={{ ...state, dispatch }}>
       {children}
