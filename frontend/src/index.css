@@ -12,20 +12,11 @@
   --error: #e7195a;
 }
 body {
+  box-sizing: border-box;
   background: #f1f1f1;
   font-family: "Nunito", sans-serif;
   font-size: calc(15px + 0.390625vw);
   height: 100vh;
-}
-
-.padding-xl {
-  padding: calc(8px + 1.5625vw);
-}
-.padding-md {
-  padding: calc(4px + 0.5625vw);
-}
-.padding-sm {
-  padding: calc(2px + 0.5625vw);
 }
 a {
   text-decoration: none;
@@ -51,87 +42,289 @@ h3 {
   margin-bottom: 10px;
 }
 
-header {
-  background: #fff;
+/* ---------------------------- App Design ---------------------------- */
+.app {
+  height: 100vh;
 }
-header .container {
+.pages {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 10px 20px;
+}
+
+/* ---------------------------- Header ---------------------------- */
+.header {
+  /* Position */
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* Size */
+  max-width: 80%;
+  padding: calc(4px + 0.5625vw) 0;
+
+  /* Design */
+  border-bottom: 1px solid #e6e6e6;
+}
+.logo {
+  width: 240px;
+}
+.logo img {
+  width: 100%;
+}
+
+.header ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-header a {
-  color: #333;
-  text-decoration: none;
+
+.header ul li {
+  margin-left: calc(4px + 0.5625vw);
 }
-.pages {
-  max-width: 1400px;
+
+.header ul li a {
+  display: flex;
+  align-items: center;
+}
+
+.header ul li a:hover {
+  color: #777;
+}
+.user-email {
+  padding: calc(4px + 0.5625vw);
+
+  font-size: small;
+  color: #656464;
+  user-select: none;
+}
+
+/* ---------------------------- Login + Register ---------------------------- */
+.form,
+.content {
+  /* Size */
+  margin: calc(8px + 1.5625vw) auto;
+  width: 40%;
   padding: 20px;
-  margin: 0 auto;
+  /* Design */
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* ---------------------------- RESPONSIVE DESIGN ---------------------------- */
-@media screen and (max-width: 1024px) {
-}
-@media screen and (max-width: 768px) {
-}
-@media screen and (max-width: 480px) {
+.form-group {
+  margin-bottom: 10px;
 }
 
+.form-group input,
+.form-group textarea,
+.form-group select {
+  /* Size */
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  /* Design */
+  border-radius: 5px;
+  border: 1px solid #e6e6e6;
+  font-family: inherit;
+}
+
+.form-group label {
+  display: block;
+  margin: 0 0 5px 3px;
+  text-align: left;
+}
+
+.btn {
+  /* Position */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  /* Design */
+  padding: 10px 20px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background: #000;
+  color: #fff;
+
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+
+  appearance: button;
+}
+
+.btn-reverse {
+  background: #fff;
+  color: #000;
+}
+
+.btn-block {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.btn:hover {
+  transform: scale(0.98);
+}
+
+/* ---------------------------- MAIN PAGE ---------------------------- */
 /* homepage */
 .home {
+}
+/* Create player */
+.form-create-player {
+  width: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0;
+  /* Design */
+  border-bottom: 1px solid #e6e6e6;
+}
+.form-group-vertical {
+  padding: 5px;
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
-.players {
-  padding: 20px;
-  width: 20%;
+.form-group-vertical input,
+.form-group-vertical textarea,
+.form-group-vertical select {
+  /* Size */
+  width: 100%;
+  padding: 10px;
+  /* Design */
+  border-radius: 5px;
+  border: 1px solid #e6e6e6;
+  font-family: inherit;
 }
-.form-create {
-  padding: 20px;
-  width: 20%;
+/* Pitch + Players */
+.edit-container {
+  width: 100%;
+  padding: 0 calc(8px + 1.5625vw) calc(8px + 1.5625vw) calc(8px + 1.5625vw);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 }
+
+/* Pitch */
 .pitch {
   position: relative;
+
   width: 60%;
   overflow: hidden;
-  border: #000 solid 1px;
+  border: #232323 solid 3px;
   border-radius: 10px;
 }
 .pitch img {
   display: block;
   width: 100%;
 }
+
 .teams {
   position: absolute;
-  height: 100%;
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.left-team {
-  width: 50%;
   height: 100%;
-  padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-gap: 10px;
+  width: 100%;
 }
+.left-team,
 .right-team {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-content: center;
+
   width: 50%;
   height: 100%;
   padding: 20px;
+}
+
+.grid-item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  padding: calc(4px + 1.0625vw);
+
+  cursor: default;
+  user-select: none;
+}
+.grid-item h4 {
+  text-transform: capitalize;
+}
+
+.player-image-container {
+  width: 40%;
+}
+.player-image-container img {
+  width: 100%;
+}
+/* Player Details */
+.players {
+  /* Position */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-gap: 10px;
+  overflow: scroll;
+  overflow-x: hidden;
+  /* Size */
+  padding: 20px;
+  width: 38%;
+  height: 70vh;
+  /* Design */
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 8px 0px inset;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.player-details {
+  position: relative;
+  margin: calc(4px + 0.5625vw) auto;
+
+  padding: calc(4px + 0.5625vw);
+  width: 90%;
+
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+}
+.player-details h4 {
+  margin: 0 0 4px 0;
+  font-size: 1.2em;
+  color: var(--primary);
+}
+.player-power {
+  border-bottom: 1px solid #e6e6e6;
+  text-align: center;
+  font-size: 0.9em;
+  color: #555;
+}
+.player-details span {
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
 }
 .assign-team {
+  margin-top: 5px;
   user-select: none;
   display: flex;
   align-items: center;
@@ -140,105 +333,87 @@ header a {
 .assign-team p {
   cursor: pointer;
 }
-.grid-item {
-  cursor: default;
-  user-select: none;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 20px;
-  border-radius: 10px;
+.assign-team .right {
+  color: #db3167;
 }
-.grid-item span {
-  font-size: 60px;
+.assign-team .left {
+  color: #313fdb;
 }
-.player-details {
-  background: #fff;
-  border-radius: 4px;
-  margin: 20px auto;
-  padding: 20px;
-  position: relative;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
-}
-.player-details h4 {
-  margin: 0 0 10px 0;
-  font-size: 1.2em;
-  color: var(--primary);
-}
-.player-details p {
-  margin: 0;
-  font-size: 0.9em;
-  color: #555;
-}
-.player-details span {
+/*Delete button */
+.player-details .delete {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
-  background: #f1f1f1;
+  top: calc(4px + 0.5625vw);
+  right: calc(4px + 0.5625vw);
   padding: 6px;
+
+  cursor: pointer;
   border-radius: 50%;
-  color: #333;
+  background: #f1f1f1;
+  color: #333333;
 }
 
-/* new workout form */
-label,
-input {
-  display: block;
-}
-input {
+/* Useful Componenets */
+.green-button {
+  margin: 5px;
   padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-form button {
-  background: var(--primary);
-  border: 0;
-  color: #fff;
-  padding: 10px;
-  border-radius: 4px;
+
   cursor: pointer;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  background: var(--primary);
   font-family: "Nunito", sans-serif;
 }
 .error {
   padding: 10px;
+
   background: #ffefef;
   border: 1px solid var(--error);
+  border-radius: 4px;
+  font-size: 0.9rem;
   color: var(--error);
-  border-radius: 4px;
-  margin: 20px 0;
 }
 
-/* navbar */
-nav {
-  display: flex;
-  align-items: center;
+/* ---------------------------- RESPONSIVE DESIGN ---------------------------- */
+@media screen and (max-width: 1366px) {
+  .players {
+    height: 60vh;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  .player-details h4 {
+    font-size: 1rem;
+  }
+  .player-power {
+    font-size: 0.7em;
+  }
 }
-nav a,
-nav button {
-  margin-left: 10px;
+@media screen and (max-width: 1024px) {
+  .players {
+    grid-template-columns: repeat(1, 1fr);
+    height: 45vh;
+  }
 }
-nav button {
-  background: #fff;
-  color: var(--primary);
-  border: 2px solid var(--primary);
-  padding: 6px 10px;
-  border-radius: 4px;
-  font-family: "Poppins";
-  cursor: pointer;
-  font-size: 1em;
+@media screen and (max-width: 768px) {
+  .edit-container {
+    flex-direction: column;
+  }
+  .players {
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    height: 30vh;
+    margin-bottom: 15px;
+  }
+  .pitch {
+    width: 100%;
+  }
+  .form {
+    width: 80%;
+  }
 }
-
-/* auth forms */
-form.signup,
-form.login {
-  max-width: 400px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 4px;
+@media screen and (max-width: 480px) {
+  .players {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

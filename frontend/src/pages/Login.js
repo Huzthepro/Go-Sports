@@ -12,27 +12,37 @@ const Login = () => {
   };
 
   return (
-    <form className="login" onSubmit={handleSubmit}>
-      <h3>Log in</h3>
-      <label>Email:</label>
-      <input
-        type="email"
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
-        value={email}
-      />
-      <label>Password:</label>
-      <input
-        type="password"
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
-        value={password}
-      />
-      <button disabled={isLoading}>Log in</button>
-      {error && <div className="error">{error}</div>}
-    </form>
+    <section className="form">
+      <h3>Login</h3>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <input
+            type="email"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            value={email}
+            placeholder="Please enter an Email"
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="password"
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+            value={password}
+            placeholder="PLease enter password"
+          />
+        </div>
+        <div className="form-group">
+          <button disabled={isLoading} type="submit" className="btn btn-block">
+            Submit
+          </button>
+        </div>
+        {error && <div className="error">{error}</div>}
+      </form>
+    </section>
   );
 };
 

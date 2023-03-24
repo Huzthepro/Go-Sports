@@ -40,23 +40,26 @@ const PlayerForm = () => {
     }
   };
   return (
-    <form className="form-create" onSubmit={handleSubmit}>
-      <h3>Add a New Player</h3>
-      <label>Player Name:</label>
-      <input
-        type="text"
-        onChange={(e) => setName(e.target.value)}
-        value={name}
-        className={emptyFields.includes("name") ? "error" : ""}
-      ></input>
-      <label>Power:</label>
-      <input
-        type="number"
-        onChange={(e) => setPower(e.target.value)}
-        value={power}
-        className={emptyFields.includes("power") ? "error" : ""}
-      ></input>
-      <button>Add Player</button>
+    <form className="form-create-player" onSubmit={handleSubmit}>
+      <div className="form-group-vertical">
+        <input
+          type="text"
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+          placeholder="Player name"
+          className={emptyFields.includes("name") ? "error" : ""}
+        ></input>
+      </div>
+      <div className="form-group-vertical">
+        <input
+          type="number"
+          onChange={(e) => setPower(e.target.value)}
+          value={power}
+          placeholder="Player power"
+          className={emptyFields.includes("power") ? "error" : ""}
+        ></input>
+      </div>
+      <button className="green-button">Add Player</button>
       {error && <div className="error">{error}</div>}
     </form>
   );

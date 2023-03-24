@@ -15,7 +15,7 @@ import Navbar from "./components/Navbar";
 function App() {
   const { user } = useAuthContext();
   return (
-    <div className="App">
+    <div className="app">
       <Router>
         <Navbar />
         <div className="pages">

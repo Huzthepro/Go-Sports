@@ -56,28 +56,30 @@ const PlayerDetails = ({ player }) => {
   return (
     <div className="player-details">
       <h4>{player.name}</h4>
-      <p>Power:{player.power}</p>
+      <p className="player-power">
+        <span class="material-symbols-outlined">charger</span> {player.power}
+      </p>
       <div className="assign-team">
         <p
-          className="material-symbols-outlined"
+          className="material-symbols-outlined left"
           onClick={() => handleClick2("leftTeam")}
         >
           arrow_circle_left
         </p>
         <p
-          className="material-symbols-outlined"
+          className="material-symbols-outlined remove-player"
           onClick={() => handleClick2("removePlayer")}
         >
           do_not_disturb_on
         </p>
         <p
-          className="material-symbols-outlined"
+          className="material-symbols-outlined right"
           onClick={() => handleClick2("rightTeam")}
         >
           arrow_circle_right
         </p>
       </div>
-      <span className="material-symbols-outlined" onClick={handleClick}>
+      <span className="material-symbols-outlined delete" onClick={handleClick}>
         delete
       </span>
       {error && <div className="error">{error}</div>}
