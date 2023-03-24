@@ -16,6 +16,10 @@ app.use((req, res, next) => {
     "https://go-team-go-sports.netlify.app"
   );
   res.header(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PATCH, DELETE, OPTIONS"
+  );
+  res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
