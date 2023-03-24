@@ -11,6 +11,14 @@ const app = express();
 // middleware
 app.use(express.json());
 app.use((req, res, next) => {
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://go-team-go-sports.netlify.app"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   console.log(req.path, req.method);
   next();
 });
