@@ -1,17 +1,35 @@
-# GoTeamGoSports
- App that you can save your current teams for upcoming matches.
 
-MUST HAVE
--Main page that you can create "Football Pitch" or search already created one
--Football Pitch data that have unique ID and information about teams
--Football Pitch Page that show the football pitch and have options to: Add player + Change player + Delete player + Delete Pitch
--Football Pitch upper part will be for one team, other part will be for other team
--Added players will be shown on the page even if they are not assigned one of the teams.
--Save Pitch, Delete Pitch and Share Pitch options.
-NICE TO HAVE
--Username&Password feature to edit Pitch
--Option to change Footbal pitch to Basketball court or Tennis court...
--Drag and Drop players in pitch and save their location
--Little avatars for player and user can choose one of them
--Skill power number for players shown with their avatar
--'Random auto decide team function' based on players skill power
+<div id="header" align="center">
+  <img src="https://media.giphy.com/media/szF0Nmtj0QXVPCc4Bg/giphy.gif" width="200"/>
+  
+  # GoTeamGoSports
+</div>
+
+How to run?
+
+-Download the project
+
+-You need to put .env file in backend folder if server is not running.
+
+-In backend folder npm init then npm install then npm start
+
+-In frontend folder npm init then npm install then npm start (if server is not running fetch will not work.. So All Fetch in frontend should changed with localhost:4000, or you can download this version https://github.com/Huzthepro/Go-Sports/commit/f53ff7d0e3c9d58623d5272343545f31f17df4f6 )
+
+
+
+App that you can save your current teams for upcoming matches.
+
+
+
+→ → [Here is the demo](https://go-team-go-sports.netlify.app/) ← ←
+-
+
+Features:
+- You can register a new user and start building your team.
+- App has its own backend
+- User Authentication.
+- Auto login with Token.
+- Delete - Create - Get players
+- Put players in 2 seperated team
+
+
