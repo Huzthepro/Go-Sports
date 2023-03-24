@@ -21,7 +21,7 @@ App that you can save your current teams for upcoming matches.
 
 
 
-→ → [Here is the demo](https://huzthepro.github.io/Dictionary/index.html) ← ←
+→ → [Here is the demo](https://go-team-go-sports.netlify.app/) ← ←
 -
 
 Features:
