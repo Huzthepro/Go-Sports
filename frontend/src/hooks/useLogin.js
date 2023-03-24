@@ -4,12 +4,15 @@ import { useAuthContext } from "./useAuthContext";
 export const useLogin = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
+  //useAuthContext will change global Auth state.
   const { dispatch } = useAuthContext();
 
+  //This information come from login form
   const login = async (email, password) => {
     setIsLoading(true);
     setError(null);
 
+    //User information posted to server
     const response = await fetch(
       "https://gosports.onrender.com/api/user/login",
       {
