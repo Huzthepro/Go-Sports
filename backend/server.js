@@ -3,6 +3,7 @@ import express from "express";
 import mongoose from "mongoose";
 import pitchRoutes from "./routes/pitchRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import cors from "cors";
 const PORT = process.env.PORT || 4000;
 
 dotenv.config();
@@ -10,16 +11,8 @@ const app = express();
 
 // middleware
 app.use(express.json());
+app.use(cors());
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, DELETE, OPTIONS"
-  );
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
   console.log(req.path, req.method);
   next();
 });
