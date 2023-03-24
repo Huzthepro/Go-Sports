@@ -63,7 +63,8 @@ const PlayerDetails = ({ player }) => {
     <div className="player-details">
       <h4>{player.name}</h4>
       <p className="player-power">
-        <span class="material-symbols-outlined">charger</span> {player.power}
+        <span className="material-symbols-outlined">charger</span>{" "}
+        {player.power}
       </p>
       <div className="assign-team">
         <p
