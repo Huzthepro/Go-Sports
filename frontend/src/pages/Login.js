@@ -4,8 +4,10 @@ import { useLogin } from "../hooks/useLogin";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  //useLogin Hook will handle login process
   const { login, error, isLoading } = useLogin();
 
+  //Form button will trigger handleSubmit function
   const handleSubmit = async (e) => {
     e.preventDefault();
     await login(email, password);
@@ -32,7 +34,7 @@ const Login = () => {
               setPassword(e.target.value);
             }}
             value={password}
-            placeholder="PLease enter password"
+            placeholder="Please enter password"
           />
         </div>
         <div className="form-group">

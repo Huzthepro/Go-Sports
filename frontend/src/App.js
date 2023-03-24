@@ -4,6 +4,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
+//This hook use authContext Context to check if user has valid token
 import { useAuthContext } from "./hooks/useAuthContext";
 
 import Home from "./pages/Home";
@@ -11,9 +12,12 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 
 import Navbar from "./components/Navbar";
+//Navbar is above every page
+//Logged in user will be navigated to Homepage
 
 function App() {
   const { user } = useAuthContext();
+  //AuthContext already control local storage if there is valid Token
   return (
     <div className="app">
       <Router>
