@@ -35,7 +35,6 @@ const PlayerForm = () => {
       setPower("");
       setError(null);
       setEmptyFields([]);
-      console.log("new Player added", json);
       dispatch({ type: "CREATE_PLAYER", payload: json });
     }
   };
