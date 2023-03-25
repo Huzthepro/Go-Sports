@@ -11,13 +11,16 @@ const PlayerDetails = ({ player }) => {
     if (!user) {
       return;
     }
-    const response = await fetch("api/pitch/" + player._id, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
+    const response = await fetch(
+      "https://gosports.onrender.com/api/pitch/" + player._id,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
     const json = await response.json();
     if (response.ok) {
       dispatch({ type: "DELETE_PLAYER", payload: json });

@@ -17,7 +17,6 @@ How to run?
 
 -In backend folder npm init then npm install then npm start
 
--In frontend folder change "proxy": "https://gosports.onrender.com/", to "proxy": "http://localhost:4000/",
 
 -In frontend folder npm init then npm install then npm start 
 
