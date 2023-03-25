@@ -5,15 +5,32 @@ import PlayerForm from "../components/PlayerForm";
 import footballPitchImage from "../assets/footballPitch.png";
 import blueTeam from "../assets/blueTeam.png";
 import redTeam from "../assets/redTeam.png";
+import { useEffect, useState } from "react";
+import Fetcher from "../helpers/Fetcher";
 
 const Home = () => {
   const path = "pitch";
   const type = "SET_PLAYER";
-  const { player } = useFetch(path, type);
+  const [player, setPlayer] = useState([]);
 
+  const getPlayers = () => {
+    const apiCon = new Fetcher();
+
+    apiCon
+      .get("pitch")
+      .then((pitch) => {
+        setPlayer(pitch);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(() => {
+    getPlayers();
+  }, []);
   return (
     <div className="home">
-      <PlayerForm />
+      <PlayerForm getPlayers={getPlayers} />
       <div className="edit-container">
         <div className="players">
           {player &&
