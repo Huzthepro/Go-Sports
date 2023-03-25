@@ -1,34 +1,15 @@
-import { useEffect } from "react";
-import { usePlayerContext } from "../hooks/usePlayerContext";
-
+import useFetch from "../hooks/useFetch";
 import PlayerDetails from "../components/PlayerDetails";
 import PlayerForm from "../components/PlayerForm";
-import { useAuthContext } from "../hooks/useAuthContext";
 
-import footballPitchImage from "../assets/footballpitch.png";
+import footballPitchImage from "../assets/footballPitch.png";
 import blueTeam from "../assets/blueTeam.png";
 import redTeam from "../assets/redTeam.png";
 
 const Home = () => {
-  const { player, dispatch } = usePlayerContext();
-  const { user } = useAuthContext();
-  useEffect(() => {
-    const fetchPlayers = async () => {
-      const response = await fetch("https://gosports.onrender.com/api/pitch", {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
-      const json = await response.json();
-      if (response.ok) {
-        dispatch({ type: "SET_PLAYER", payload: json });
-      }
-    };
-
-    if (user) {
-      fetchPlayers();
-    }
-  }, [dispatch, user]);
+  const path = "pitch";
+  const type = "SET_PLAYER";
+  const { player } = useFetch(path, type);
 
   return (
     <div className="home">
@@ -40,7 +21,6 @@ const Home = () => {
               <PlayerDetails key={mappedPlayer._id} player={mappedPlayer} />
             ))}
         </div>
-
         <div className="pitch">
           <div className="teams">
             <div className="left-team">

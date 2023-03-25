@@ -10,6 +10,7 @@ export const useLogout = () => {
 
     //dispatch logout action
     dispatch({ type: "LOGOUT" });
+    // Dispatch clear players
     playerDispatch({ type: "SET_PLAYER", payload: null });
   };
 

@@ -17,7 +17,7 @@ const PlayerForm = () => {
     }
     const player = { name, power };
 
-    const response = await fetch("https://gosports.onrender.com/api/pitch", {
+    const response = await fetch("http://localhost:4000/api/pitch", {
       method: "POST",
       body: JSON.stringify(player),
       headers: {

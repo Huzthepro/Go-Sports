@@ -80,8 +80,10 @@ const updatePlayer = async (req, res) => {
     { _id: id },
     {
       ...req.body,
-    }
+    },
+    { new: true }
   );
+
   if (!player) {
     return res.status(404).json({ error: "No such player" });
   }
@@ -93,7 +95,6 @@ const updatePlayer = async (req, res) => {
 // Method: DELETE
 const deletePlayer = async (req, res) => {
   const { id } = req.params;
-
   //Quick check if the entered Id is in valid form
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "Id is not valid type" });

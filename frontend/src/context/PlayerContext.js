@@ -1,9 +1,8 @@
 import { createContext, useReducer } from "react";
-
 export const PlayerContext = createContext();
 
-//state represent: player: null,
-//action represent: playerReducer (it has a payload)
+//state represent: current 'state' coming from PlayerContextProvider
+//action represent: new info coming with 'dispatch'
 export const playerReducer = (state, action) => {
   switch (action.type) {
     case "SET_PLAYER":
@@ -35,6 +34,12 @@ export const playerReducer = (state, action) => {
   }
 };
 
+// Information first coming here in state.
+// But
+// Before storing coming information in 'state' =>
+// With useReducer we reduce the information as we want with playerReducer =>
+// player is one of the field playerReducer use to store data. Then send it to state.
+// Then we store it in state.
 export const PlayerContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(playerReducer, {
     player: null,

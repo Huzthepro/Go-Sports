@@ -12,7 +12,7 @@ const PlayerDetails = ({ player }) => {
       return;
     }
     const response = await fetch(
-      "https://gosports.onrender.com/api/pitch/" + player._id,
+      "http://localhost:4000/api/pitch/" + player._id,
       {
         method: "DELETE",
         headers: {
@@ -26,6 +26,7 @@ const PlayerDetails = ({ player }) => {
       dispatch({ type: "DELETE_PLAYER", payload: json });
     }
   };
+
   const handleClick2 = async (team) => {
     const updatedPlayer = {
       ...player,
@@ -38,9 +39,8 @@ const PlayerDetails = ({ player }) => {
           ? null
           : null,
     };
-
     const response = await fetch(
-      "https://gosports.onrender.com/api/pitch/" + updatedPlayer._id,
+      "http://localhost:4000/api/pitch/" + updatedPlayer._id,
       {
         method: "PATCH",
         headers: {
@@ -50,12 +50,12 @@ const PlayerDetails = ({ player }) => {
         body: JSON.stringify(updatedPlayer),
       }
     );
-    const json = await response.json();
+    const jsonUpdate = await response.json();
     if (!response.ok) {
-      setError(json.error);
+      setError(jsonUpdate.error);
     }
     if (response.ok) {
-      dispatch({ type: "UPDATE_PLAYER", payload: json });
+      dispatch({ type: "UPDATE_PLAYER", payload: jsonUpdate });
     }
   };
 
