@@ -7,21 +7,24 @@
 
 How to run?
 
+-→ → [Here is the demo](https://go-team-go-sports.netlify.app/) ← ←
+
+-How to run server in your computer?
+
 -Download the project
 
 -You need to put .env file in backend folder if server is not running.
 
 -In backend folder npm init then npm install then npm start
 
--In frontend folder npm init then npm install then npm start (if server is not running fetch will not work.. So All Fetch in frontend should changed with localhost:4000, or you can download this version https://github.com/Huzthepro/Go-Sports/commit/f53ff7d0e3c9d58623d5272343545f31f17df4f6 )
+-In frontend folder change "proxy": "https://gosports.onrender.com/", to "proxy": "http://localhost:4000/",
+
+-In frontend folder npm init then npm install then npm start 
 
 
 
 App that you can save your current teams for upcoming matches.
 
-
-
-→ → [Here is the demo](https://go-team-go-sports.netlify.app/) ← ←
 -
 
 Features:

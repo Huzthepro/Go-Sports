@@ -14,7 +14,7 @@ const Home = () => {
   const { user } = useAuthContext();
   useEffect(() => {
     const fetchPlayers = async () => {
-      const response = await fetch("https://gosports.onrender.com/api/pitch", {
+      const response = await fetch("api/pitch", {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
