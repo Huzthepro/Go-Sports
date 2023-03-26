@@ -11,6 +11,7 @@ import redTeam from "../assets/redTeam.png";
 const Home = () => {
   const [player, setPlayer] = useState([]);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(null);
 
   const getPlayers = () => {
     const apiCon = new Fetcher();
