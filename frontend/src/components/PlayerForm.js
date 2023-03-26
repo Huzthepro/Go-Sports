@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { usePlayerContext } from "../hooks/usePlayerContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import Fetcher from "../helpers/Fetcher";
+
 const PlayerForm = ({ getPlayers }) => {
-  const { dispatch } = usePlayerContext();
   const { user } = useAuthContext();
   const [name, setName] = useState("");
   const [power, setPower] = useState("");
@@ -16,40 +15,21 @@ const PlayerForm = ({ getPlayers }) => {
       setError("You must be logged in");
       return;
     }
-
     const apiCon = new Fetcher();
 
     apiCon
       .post("pitch", { name, power })
-      .then((pitch) => {
+      .then(() => {
         getPlayers();
+        setName("");
+        setPower("");
+        setError(null);
+        setEmptyFields([]);
       })
       .catch((err) => {
-        console.log(err);
+        setError(err.response.data.error);
+        setEmptyFields(err.response.data.emptyFields);
       });
-
-    const player = { name, power };
-
-    // const response = await fetch("http://localhost:4000/api/pitch", {
-    //   method: "POST",
-    //   body: JSON.stringify(player),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: `Bearer ${user.token}`,
-    //   },
-    // });
-    // const json = await response.json();
-    // if (!response.ok) {
-    //   setError(json.error);
-    //   setEmptyFields(json.emptyFields);
-    // }
-    // if (response.ok) {
-    //   setName("");
-    //   setPower("");
-    //   setError(null);
-    //   setEmptyFields([]);
-    //   dispatch({ type: "CREATE_PLAYER", payload: json });
-    // }
   };
   return (
     <form className="form-create-player" onSubmit={handleSubmit}>

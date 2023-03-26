@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
+import Fetcher from "../helpers/Fetcher";
 
 export const useSignup = () => {
   const [error, setError] = useState(null);
@@ -12,29 +13,22 @@ export const useSignup = () => {
     setIsLoading(true);
     setError(null);
 
-    //User information posted to server
-    const response = await fetch("http://localhost:4000/api/user/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
-    const json = await response.json();
+    //User information(mail+password) posted to server
+    const apiCon = new Fetcher();
 
-    if (!response.ok) {
-      setIsLoading(false);
-      setError(json.error);
-    }
-    if (response.ok) {
-      //Save the user to local storage
-      //It has mail and Token. This token later will be used for auto login
-      localStorage.setItem("user", JSON.stringify(json));
-
-      //update the authContext with json coming from server and status is now: LOGIN not SIGNUP!!! because no need.
-      dispatch({ type: "LOGIN", payload: json });
-      setIsLoading(false);
-    }
+    apiCon
+      .post("user/signup", { email, password })
+      .then((userData) => {
+        //Save the user to local storage
+        localStorage.setItem("user", JSON.stringify(userData));
+        //update the authContext with user
+        dispatch({ type: "LOGIN", payload: userData });
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setError(err.response.data.error);
+      });
   };
   return { signup, isLoading, error };
 };

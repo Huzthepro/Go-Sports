@@ -1,17 +1,16 @@
-import useFetch from "../hooks/useFetch";
+import { useEffect, useState } from "react";
+import Fetcher from "../helpers/Fetcher";
+
 import PlayerDetails from "../components/PlayerDetails";
 import PlayerForm from "../components/PlayerForm";
 
 import footballPitchImage from "../assets/footballPitch.png";
 import blueTeam from "../assets/blueTeam.png";
 import redTeam from "../assets/redTeam.png";
-import { useEffect, useState } from "react";
-import Fetcher from "../helpers/Fetcher";
 
 const Home = () => {
-  const path = "pitch";
-  const type = "SET_PLAYER";
   const [player, setPlayer] = useState([]);
+  const [error, setError] = useState(null);
 
   const getPlayers = () => {
     const apiCon = new Fetcher();
@@ -22,7 +21,7 @@ const Home = () => {
         setPlayer(pitch);
       })
       .catch((err) => {
-        console.log(err);
+        setError(err.response.data.error);
       });
   };
   useEffect(() => {
@@ -30,12 +29,17 @@ const Home = () => {
   }, []);
   return (
     <div className="home">
+      {error && <div className="error">{error}</div>}
       <PlayerForm getPlayers={getPlayers} />
       <div className="edit-container">
         <div className="players">
           {player &&
             player.map((mappedPlayer) => (
-              <PlayerDetails key={mappedPlayer._id} player={mappedPlayer} />
+              <PlayerDetails
+                key={mappedPlayer._id}
+                player={mappedPlayer}
+                getPlayers={getPlayers}
+              />
             ))}
         </div>
         <div className="pitch">

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
-
+import Fetcher from "../helpers/Fetcher";
 export const useLogin = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
@@ -13,28 +13,21 @@ export const useLogin = () => {
     setError(null);
 
     //User information(mail+password) posted to server
-    const response = await fetch("http://localhost:4000/api/user/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
-    const json = await response.json();
+    const apiCon = new Fetcher();
 
-    if (!response.ok) {
-      setIsLoading(false);
-      setError(json.error);
-    }
-    //Server validate the user, give us back its information as json
-    if (response.ok) {
-      //Save the user to local storage
-      localStorage.setItem("user", JSON.stringify(json));
-
-      //update the authContext with user
-      dispatch({ type: "LOGIN", payload: json });
-      setIsLoading(false);
-    }
+    apiCon
+      .post("user/login", { email, password })
+      .then((userData) => {
+        //Save the user to local storage
+        localStorage.setItem("user", JSON.stringify(userData));
+        //update the authContext with user
+        dispatch({ type: "LOGIN", payload: userData });
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err.response.data.error);
+        setIsLoading(false);
+      });
   };
   return { login, isLoading, error };
 };

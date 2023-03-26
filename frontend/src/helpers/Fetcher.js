@@ -18,8 +18,8 @@ class Fetcher {
     return this.call(url, "POST", data);
   }
 
-  put(url, data) {
-    return this.call(url, "PUT", data);
+  patch(url, data) {
+    return this.call(url, "PATCH", data);
   }
 
   delete(url) {

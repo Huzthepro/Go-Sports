@@ -1,30 +1,25 @@
-import { usePlayerContext } from "../hooks/usePlayerContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useState } from "react";
+import Fetcher from "../helpers/Fetcher";
 
-const PlayerDetails = ({ player }) => {
-  const { dispatch } = usePlayerContext();
+const PlayerDetails = ({ player, getPlayers }) => {
   const { user } = useAuthContext();
   const [error, setError] = useState(null);
+  const apiCon = new Fetcher();
 
   const handleClick = async () => {
     if (!user) {
       return;
     }
-    const response = await fetch(
-      "http://localhost:4000/api/pitch/" + player._id,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user.token}`,
-        },
-      }
-    );
-    const json = await response.json();
-    if (response.ok) {
-      dispatch({ type: "DELETE_PLAYER", payload: json });
-    }
+
+    apiCon
+      .delete("pitch/" + player._id)
+      .then(() => {
+        getPlayers();
+      })
+      .catch((err) => {
+        setError(err.response.data.error);
+      });
   };
 
   const handleClick2 = async (team) => {
@@ -39,24 +34,15 @@ const PlayerDetails = ({ player }) => {
           ? null
           : null,
     };
-    const response = await fetch(
-      "http://localhost:4000/api/pitch/" + updatedPlayer._id,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user.token}`,
-        },
-        body: JSON.stringify(updatedPlayer),
-      }
-    );
-    const jsonUpdate = await response.json();
-    if (!response.ok) {
-      setError(jsonUpdate.error);
-    }
-    if (response.ok) {
-      dispatch({ type: "UPDATE_PLAYER", payload: jsonUpdate });
-    }
+
+    apiCon
+      .patch("pitch/" + updatedPlayer._id, updatedPlayer)
+      .then(() => {
+        getPlayers();
+      })
+      .catch((err) => {
+        setError(err.response.data.error);
+      });
   };
 
   return (
