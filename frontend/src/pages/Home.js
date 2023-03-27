@@ -13,6 +13,7 @@ const Home = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
 
+  console.log("test");
   const getPlayers = () => {
     const apiCon = new Fetcher();
 
