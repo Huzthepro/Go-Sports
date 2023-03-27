@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 
 const createToken = (_id) => {
   return jasonWebToken.sign({ _id: _id }, process.env.JWT_SECRET, {
-    expiresIn: "3d",
+    expiresIn: "30d",
   });
 };
 

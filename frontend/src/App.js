@@ -8,6 +8,7 @@ import {
 import { useAuthContext } from "./hooks/useAuthContext";
 
 import Home from "./pages/Home";
+import Pitch from "./pages/Pitch";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 
@@ -24,10 +25,7 @@ function App() {
         <Navbar />
         <div className="pages">
           <Routes>
-            <Route
-              path="/"
-              element={user ? <Home /> : <Navigate to="/login" />}
-            />
+            <Route path="/" element={<Home />} />
             <Route
               path="/login"
               element={!user ? <Login /> : <Navigate to="/" />}
@@ -35,6 +33,10 @@ function App() {
             <Route
               path="/signup"
               element={!user ? <Signup /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/pitch"
+              element={user ? <Pitch /> : <Navigate to="/" />}
             />
           </Routes>
         </div>

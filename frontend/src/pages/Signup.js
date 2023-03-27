@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSignup } from "../hooks/useSignup";
+import Spinner from "../components/Spinner";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -16,6 +17,7 @@ const Signup = () => {
   return (
     <section className="form">
       <h3>Sign up</h3>
+      {isLoading && <Spinner spinMessage={true} />}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <input

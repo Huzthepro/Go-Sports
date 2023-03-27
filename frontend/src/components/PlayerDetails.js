@@ -2,7 +2,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useState } from "react";
 import Fetcher from "../helpers/Fetcher";
 
-const PlayerDetails = ({ player, getPlayers }) => {
+const PlayerDetails = ({ player, refreshPlayers }) => {
   const { user } = useAuthContext();
   const [error, setError] = useState(null);
   const apiCon = new Fetcher();
@@ -15,7 +15,7 @@ const PlayerDetails = ({ player, getPlayers }) => {
     apiCon
       .delete("pitch/" + player._id)
       .then(() => {
-        getPlayers();
+        refreshPlayers();
       })
       .catch((err) => {
         setError(err.response.data.error);
@@ -38,7 +38,7 @@ const PlayerDetails = ({ player, getPlayers }) => {
     apiCon
       .patch("pitch/" + updatedPlayer._id, updatedPlayer)
       .then(() => {
-        getPlayers();
+        refreshPlayers();
       })
       .catch((err) => {
         setError(err.response.data.error);
