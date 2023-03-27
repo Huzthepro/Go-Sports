@@ -1,4 +1,4 @@
-function Spinner(spinMessage) {
+function Spinner({ spinMessage }) {
   return (
     <div className="loadingSpinnerContainer">
       <div className="loadingSpinner"></div>

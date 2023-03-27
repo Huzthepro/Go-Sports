@@ -17,7 +17,7 @@ const Login = () => {
   return (
     <section className="form">
       <h3>Login</h3>
-      {isLoading && <Spinner spinMessage={true} />}
+      {isLoading && <Spinner spinMessage={isLoading} />}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <input

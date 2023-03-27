@@ -54,6 +54,7 @@ h3 {
 /* ---------------------------- Header ---------------------------- */
 .header {
   /* Position */
+  height: 71px;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -173,9 +174,48 @@ h3 {
 
 /* ---------------------------- MAIN PAGE ---------------------------- */
 /* homepage */
+
+.home-page {
+  padding: calc(8px + 1.5625vw);
+}
+.home-page h4 {
+  text-align: center;
+  color: #4b2f2f;
+}
+.games {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: calc(8px + 1.5625vw);
+}
+.game-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px solid #5a58583b;
+  width: 20%;
+  padding: calc(8px + 1.5625vw);
+  border-radius: 8px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.game-card:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.card-img-container {
+  width: 60%;
+}
+.card-img-container img {
+  width: 100%;
+}
+
+/* ---------------------------- PITCH PAGE ---------------------------- */
 .home {
 }
-/* Create player */
+/* -------- Create Player Section --------*/
 .form-create-player {
   width: 100%;
   display: flex;
@@ -202,7 +242,7 @@ h3 {
   border: 1px solid #e6e6e6;
   font-family: inherit;
 }
-/* Pitch + Players */
+/* -------- PITCH + PLAYERS Section --------*/
 .edit-container {
   width: 100%;
   padding: 0 calc(8px + 1.5625vw) calc(8px + 1.5625vw) calc(8px + 1.5625vw);
@@ -211,10 +251,9 @@ h3 {
   justify-content: space-between;
 }
 
-/* Pitch */
+/* -------- PITCH Section --------*/
 .pitch {
   position: relative;
-
   width: 60%;
   overflow: hidden;
   border: #232323 solid 3px;
@@ -265,7 +304,7 @@ h3 {
 .player-image-container img {
   width: 100%;
 }
-/* Player Details */
+/* -------- PLAYER DETAILS Section --------*/
 .players {
   /* Position */
   display: grid;
@@ -350,7 +389,7 @@ h3 {
   color: #333333;
 }
 
-/* Useful Componenets */
+/* -------- Useful Componenets --------*/
 .green-button {
   margin: 5px;
   padding: 10px;
