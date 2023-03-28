@@ -1,20 +1,22 @@
 <a name="readme-top"></a>
 <div id="header" align="center">
+  <img src="/frontend/src/assets/site-template.png" width="800"/>
   
-  # → → [Here is the link](https://go-team-go-sports.netlify.app/) ← ← 
+  # Go Team Go Sports
+ 
 
 </div>
 <img src="/frontend/src/assets/tactic.png" width="200" align="right" />
 
 <div id="header" align="center">
   
-  # Go Team Go Sports
+### → → [Here is the link](https://go-team-go-sports.netlify.app/) ← ← 
  
 </div>
 <div align="center">
-  <a href="https://go-team-go-sports.netlify.app/">
-    <img src="/frontend/src/assets/logo.png" alt="Logo" width="190" height="35">
-  </a>
+
+  ## Easy way to build your team
+  
 <br />
   <p align="center">
     Plan your sport game squads with some style!
@@ -27,54 +29,95 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+Simple app that let you -add players, -give score for players, -put them on field.
+So you can share latest squat with your friends before starting the game
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+Features:
+* Up and running its own server
+* Create user option
+* Login and get Token (User authentication)
+* Server side CRUD operations with players.
+* React on client side
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+<!-- DOWNLOAD -->
+## DOWNLOAD
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+First clone the repository.
 
-Use the `BLANK_README.md` to get started.
+### BACKEND
+After cloning it in your computer, you need to open -backend- folder in terminal and type
 
-
-
-
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
   ```sh
-  npm install npm@latest -g
+  npm init
   ```
-
-### Installation
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+  than
+  
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+  npm install
+  ```
+This will install node modelues for backend. Then you need to add .env file in your backend.
+
+.env file should have 3 value:
+ ```env
+   PORT = 4000
    ```
-3. Install NPM packages
+   
+ ```env
+   MONGO_URI = mongodb+srv://<YourUserName>:<YourUserPassword>@<MongoDBConfiguration>
+   ```
+   
+ ```env
+   JWT_SECRET = yoursecret
+   ```
+  
+  You should get MONGO_URI from your MongoDB cloud atlass
+  
+  After that 
+  
    ```sh
-   npm install
+  npm start
+  ```
+and your server will start running 🎉🎉
+
+
+
+### FRONTEND
+
+After cloning it in your computer, you need to open -frontend- folder in terminal and type
+
+  ```sh
+  npm init
+  ```
+  than
+  
+   ```sh
+  npm install
+  ```
+This will install node modelues for frontend.
+
+Then be sure your requests are going to your server in 
+
+- frontend
+    - src
+        - helpers
+            -Fetcher.js
+          
+ ```js
+   // this.apiUrl = "https://gosports.onrender.com/api/";
+    this.apiUrl = "http://localhost:4000/api/";
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+   
+Local host is not commended
+
+
+  After that 
+  
+   ```sh
+  npm start
+  ```
+and your app will start running 🎉🎉
+
+
 
 <h1 align="right"><a href="#readme-top">⇧</a></h1>
 
@@ -83,34 +126,15 @@ _Below is an example of how you can instruct your audience on installing and set
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
+- [x] Add Login/Register
+- [x] Add more customization for players
+- [ ] Add dark/light mode
+- [ ] Add some games user can play
 - [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+    - [ ] Dutch
+    - [ ] French
 
 <h1 align="right"><a href="#readme-top">⇧</a></h1>
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-<h1 align="right"><a href="#readme-top">⇧</a></h1>
-
-
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
 
 
 
