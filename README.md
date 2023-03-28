@@ -1,14 +1,14 @@
 <a name="readme-top"></a>
 <div id="header" align="center">
-  <img src="https://media.giphy.com/media/szF0Nmtj0QXVPCc4Bg/giphy.gif" width="200"/>  
   
-  # Go Team Go Sports
+  # → → [Here is the link](https://go-team-go-sports.netlify.app/) ← ← 
+
 </div>
 <img src="/frontend/src/assets/tactic.png" width="200" align="right" />
 
 <div id="header" align="center">
   
-# → → [Here is the link](https://go-team-go-sports.netlify.app/) ← ← 
+  # Go Team Go Sports
  
 </div>
 <div align="center">
