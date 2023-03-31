@@ -2,8 +2,8 @@ import axios from "axios";
 
 class Fetcher {
   constructor() {
-    // this.apiUrl = "https://gosports.onrender.com/api/";
-    this.apiUrl = "http://localhost:4000/api/";
+    this.apiUrl = "https://gosports.onrender.com/api/";
+    // this.apiUrl = "http://localhost:4000/api/";
     this.headers = {
       "Content-Type": "application/json",
       Authorization:
