@@ -473,8 +473,12 @@ h3 {
   }
 }
 @media screen and (max-width: 768px) {
+  .header .green-button {
+    margin: 5px;
+    padding: 6px;
+  }
   .game-card {
-    width: 35%;
+    width: 38%;
   }
   .edit-container {
     flex-direction: column;
