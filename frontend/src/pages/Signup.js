@@ -17,7 +17,7 @@ const Signup = () => {
   return (
     <section className="form">
       <h3>Sign up</h3>
-      {isLoading && <Spinner spinMessage={isLoading} />}
+      {isLoading && <Spinner spinMessage={"Server is loading"} />}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <input

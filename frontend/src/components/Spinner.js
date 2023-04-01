@@ -4,7 +4,7 @@ function Spinner({ spinMessage }) {
       <div className="loadingSpinner"></div>
       {spinMessage && (
         <div className="spin-message">
-          <p>Server is loading</p>
+          <p>{spinMessage}</p>
         </div>
       )}
     </div>
