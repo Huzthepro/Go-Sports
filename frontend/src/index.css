@@ -308,16 +308,23 @@ h3 {
 /* -------- PLAYER DETAILS Section --------*/
 .players {
   /* Position */
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  overflow: scroll;
-  overflow-x: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  flex-wrap: wrap;
   /* Size */
   padding: 20px;
   width: 38%;
+  min-height: 500px;
   /* Design */
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 8px 0px inset;
+}
+.no-team {
+  text-align: center;
+  width: 31%;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
 }
 /* width */
 ::-webkit-scrollbar {

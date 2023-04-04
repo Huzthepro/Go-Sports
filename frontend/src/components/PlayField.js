@@ -1,7 +1,6 @@
 import footballPitchImage from "../assets/footballPitch.png";
-import blueTeam from "../assets/blueTeam.png";
-import redTeam from "../assets/redTeam.png";
 import Fetcher from "../helpers/Fetcher";
+import Player from "./Player";
 import { useState } from "react";
 
 const PlayField = ({ players, refreshPlayers }) => {
@@ -120,23 +119,6 @@ const PlayField = ({ players, refreshPlayers }) => {
         });
     }
   };
-  const handleDragStart = (event, mappedPlayerId, team) => {
-    event.dataTransfer.setData("text/plain", mappedPlayerId);
-    var img = document.createElement("img");
-    if (team === "blue") {
-      img.src = blueTeam;
-    } else {
-      img.src = redTeam;
-    }
-
-    event.dataTransfer.setDragImage(img, img.width / 2, img.height / 2);
-    requestAnimationFrame(function () {
-      event.target.classList.add("untargetable");
-    });
-  };
-  function endDrag(e) {
-    e.target.classList.remove("untargetable");
-  }
 
   return (
     <div className="pitch">
@@ -154,31 +136,11 @@ const PlayField = ({ players, refreshPlayers }) => {
                 mappedPlayer.position.team === "blue"
               ) {
                 return (
-                  <div
-                    className="grid-item"
+                  <Player
                     key={mappedPlayer._id}
-                    draggable
-                    onDragStart={(event) =>
-                      handleDragStart(event, mappedPlayer._id, "blue")
-                    }
-                    onDragEnd={endDrag}
-                    style={{
-                      left: `${mappedPlayer.position.x}%`,
-                      top: `${mappedPlayer.position.y}%`,
-                    }}
-                    id={mappedPlayer._id}
-                  >
-                    <div className="player-image-container">
-                      <img
-                        draggable="false"
-                        src={blueTeam}
-                        alt="blue-team-img"
-                      ></img>
-                    </div>
-                    <div className="player-text-container">
-                      <h4>{mappedPlayer.name} </h4>
-                    </div>
-                  </div>
+                    mappedPlayer={mappedPlayer}
+                    team={"blue-team"}
+                  />
                 );
               } else {
                 return null;
@@ -197,31 +159,11 @@ const PlayField = ({ players, refreshPlayers }) => {
                 mappedPlayer.position.team === "red"
               ) {
                 return (
-                  <div
-                    className="grid-item"
+                  <Player
                     key={mappedPlayer._id}
-                    draggable
-                    onDragStart={(event) =>
-                      handleDragStart(event, mappedPlayer._id, "red")
-                    }
-                    onDragEnd={endDrag}
-                    style={{
-                      left: `${mappedPlayer.position.x}%`,
-                      top: `${mappedPlayer.position.y}%`,
-                    }}
-                    id={mappedPlayer._id}
-                  >
-                    <div className="player-image-container">
-                      <img
-                        draggable="false"
-                        src={redTeam}
-                        alt="red-team-img"
-                      ></img>
-                    </div>
-                    <div className="player-text-container">
-                      <h4>{mappedPlayer.name} </h4>
-                    </div>
-                  </div>
+                    mappedPlayer={mappedPlayer}
+                    team={"red-team"}
+                  />
                 );
               } else {
                 return null;

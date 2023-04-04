@@ -55,6 +55,9 @@ const createPlayer = async (req, res) => {
     const player = await playerCollection.create({
       name,
       power,
+      position: {
+        team: "no-team",
+      },
       user_id,
     });
     res.status(200).json(player);

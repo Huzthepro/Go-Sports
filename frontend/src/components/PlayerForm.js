@@ -15,10 +15,14 @@ const PlayerForm = ({ getPlayers }) => {
       setError("You must be logged in");
       return;
     }
+
     const apiCon = new Fetcher();
 
     apiCon
-      .post("pitch", { name, power })
+      .post("pitch", {
+        name,
+        power,
+      })
       .then(() => {
         getPlayers();
         setName("");
