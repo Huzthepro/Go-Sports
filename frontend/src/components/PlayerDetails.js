@@ -25,14 +25,16 @@ const PlayerDetails = ({ player, refreshPlayers }) => {
   const handleClick2 = async (team) => {
     const updatedPlayer = {
       ...player,
-      team:
-        team === "leftTeam"
-          ? "left"
-          : team === "rightTeam"
-          ? "right"
-          : team === "remove"
-          ? null
-          : null,
+      position: {
+        team:
+          team === "blueTeam"
+            ? "blue"
+            : team === "redTeam"
+            ? "red"
+            : team === "remove"
+            ? null
+            : null,
+      },
     };
 
     apiCon
@@ -45,8 +47,12 @@ const PlayerDetails = ({ player, refreshPlayers }) => {
       });
   };
 
+  const handleDragStart = (e) => {
+    e.dataTransfer.setData("text/plain", player._id);
+  };
+
   return (
-    <div className="player-details">
+    <div className="player-details" draggable onDragStart={handleDragStart}>
       <h4>{player.name}</h4>
       <p className="player-power">
         <span className="material-symbols-outlined">charger</span>{" "}
@@ -55,7 +61,7 @@ const PlayerDetails = ({ player, refreshPlayers }) => {
       <div className="assign-team">
         <p
           className="material-symbols-outlined left"
-          onClick={() => handleClick2("leftTeam")}
+          onClick={() => handleClick2("blueTeam")}
         >
           arrow_circle_left
         </p>
@@ -67,7 +73,7 @@ const PlayerDetails = ({ player, refreshPlayers }) => {
         </p>
         <p
           className="material-symbols-outlined right"
-          onClick={() => handleClick2("rightTeam")}
+          onClick={() => handleClick2("redTeam")}
         >
           arrow_circle_right
         </p>

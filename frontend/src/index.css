@@ -272,34 +272,35 @@ h3 {
   height: 100%;
   width: 100%;
 }
-.left-team,
-.right-team {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  justify-content: center;
-  align-content: center;
-
+.blue-team {
+  position: relative;
   width: 50%;
   height: 100%;
-  padding: 20px;
+}
+.red-team {
+  position: relative;
+  width: 50%;
+  height: 100%;
 }
 
 .grid-item {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
-  padding: calc(4px + 1.0625vw);
-
-  cursor: default;
-  user-select: none;
+  position: absolute;
+  text-align: center;
+  width: 25%;
+}
+.hide {
+  visibility: hidden;
+}
+.untargetable {
+  pointer-events: none;
 }
 .grid-item h4 {
   text-transform: capitalize;
 }
 
 .player-image-container {
-  width: 40%;
+  margin: auto;
+  width: 70%;
 }
 .player-image-container img {
   width: 100%;

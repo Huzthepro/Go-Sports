@@ -11,11 +11,16 @@ const playerSchema = new Schema(
     power: {
       type: Number,
     },
-    team: {
-      type: String,
-    },
     position: {
-      type: Number,
+      x: {
+        type: Number,
+      },
+      y: {
+        type: Number,
+      },
+      team: {
+        type: String,
+      },
     },
     user_id: {
       type: String,

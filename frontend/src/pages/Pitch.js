@@ -40,7 +40,7 @@ const Pitch = () => {
       <div className="edit-container">
         <PlayerGallery players={players} refreshPlayers={refreshPlayers} />
 
-        <PlayField players={players} />
+        <PlayField players={players} refreshPlayers={refreshPlayers} />
       </div>
     </div>
   );

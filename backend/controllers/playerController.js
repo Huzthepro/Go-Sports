@@ -33,7 +33,7 @@ const getSinglePlayer = async (req, res) => {
 // Route= api/pitch/
 // Method: POST
 const createPlayer = async (req, res) => {
-  const { name, power, team, position } = req.body;
+  const { name, power } = req.body;
 
   //Empty field control
   let emptyFields = [];
@@ -55,8 +55,6 @@ const createPlayer = async (req, res) => {
     const player = await playerCollection.create({
       name,
       power,
-      team,
-      position,
       user_id,
     });
     res.status(200).json(player);
@@ -107,10 +105,36 @@ const deletePlayer = async (req, res) => {
   res.status(200).json(player);
 };
 
+//  ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓  Swap Player  ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
+// Route= api/pitch/swap-positions
+// Method: Pitch
+const swapPositions = async (req, res) => {
+  const { players } = req.body;
+  console.log(players);
+  try {
+    const updatedPositions = players.map((player) => ({
+      _id: player._id,
+      position: player.position,
+    }));
+
+    const updatedPlayers = await Promise.all(
+      updatedPositions.map(({ _id, position }) =>
+        playerCollection.findByIdAndUpdate(_id, { position }, { new: true })
+      )
+    );
+
+    res.json({ updatedPlayers });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
 export {
   getPlayers,
   getSinglePlayer,
   createPlayer,
   deletePlayer,
   updatePlayer,
+  swapPositions,
 };
