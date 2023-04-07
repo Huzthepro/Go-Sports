@@ -1,15 +1,19 @@
 import blueTeam from "../assets/blueTeam.png";
 import redTeam from "../assets/redTeam.png";
+import carry from "../assets/football2.png";
+
+import PlayerMenu from "./PlayerMenu";
+import { useState } from "react";
 
 const Player = ({ mappedPlayer, team }) => {
-  const handleDragStart = (event, mappedPlayerId, team) => {
+  const [playerMenu, setPlayerMenu] = useState(false);
+  const playerClicked = () => {
+    setPlayerMenu(true);
+  };
+  const handleDragStart = (event, mappedPlayerId) => {
     event.dataTransfer.setData("text/plain", mappedPlayerId);
     var img = document.createElement("img");
-    if (team === "blue") {
-      img.src = blueTeam;
-    } else {
-      img.src = redTeam;
-    }
+    img.src = carry;
 
     event.dataTransfer.setDragImage(img, img.width / 2, img.height / 2);
     requestAnimationFrame(function () {
@@ -25,6 +29,7 @@ const Player = ({ mappedPlayer, team }) => {
       className={team ? "grid-item" : "no-team"}
       key={mappedPlayer._id}
       draggable
+      onClick={playerClicked}
       onDragStart={(event) =>
         handleDragStart(
           event,
@@ -40,6 +45,7 @@ const Player = ({ mappedPlayer, team }) => {
       id={mappedPlayer._id}
     >
       <div className="player-image-container">
+        <h4 className="number">{mappedPlayer.number}</h4>
         <img
           draggable="false"
           src={team === "blue-team" ? blueTeam : redTeam}
@@ -49,6 +55,7 @@ const Player = ({ mappedPlayer, team }) => {
       <div className="player-text-container">
         <h4>{mappedPlayer.name} </h4>
       </div>
+      {playerMenu && <PlayerMenu />}
     </div>
   );
 };

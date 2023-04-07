@@ -11,6 +11,9 @@ const playerSchema = new Schema(
     power: {
       type: Number,
     },
+    number: {
+      type: Number,
+    },
     position: {
       x: {
         type: Number,

@@ -6,6 +6,7 @@ const AddPLayer = ({ refreshPlayers }) => {
   const { user } = useAuthContext();
   const [name, setName] = useState("");
   const [power, setPower] = useState("");
+  const [number, setNumber] = useState("");
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
 
@@ -18,11 +19,12 @@ const AddPLayer = ({ refreshPlayers }) => {
     const apiCon = new Fetcher();
 
     apiCon
-      .post("pitch", { name, power })
+      .post("pitch", { name, number, power })
       .then(() => {
         refreshPlayers();
         setName("");
         setPower("");
+        setNumber("");
         setError(null);
         setEmptyFields([]);
       })
@@ -49,6 +51,15 @@ const AddPLayer = ({ refreshPlayers }) => {
           value={power}
           placeholder="Player power"
           className={emptyFields.includes("power") ? "error" : ""}
+        ></input>
+      </div>
+      <div className="form-group-vertical">
+        <input
+          type="number"
+          onChange={(e) => setNumber(e.target.value)}
+          value={number}
+          placeholder="Player Number"
+          className={emptyFields.includes("number") ? "error" : ""}
         ></input>
       </div>
       <button className="green-button">Add Player</button>

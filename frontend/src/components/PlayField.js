@@ -17,13 +17,11 @@ const PlayField = ({ players, refreshPlayers }) => {
     } else {
       color = "red";
     }
-    console.log(color);
     const playerId = e.dataTransfer.getData("text/plain");
     const player = players.find((p) => p._id === playerId);
     if (!player) {
       return;
     }
-    console.log(team);
 
     const pitch = e.target.getBoundingClientRect();
     const droppedPlayer = e.target.closest(".grid-item");
@@ -39,7 +37,6 @@ const PlayField = ({ players, refreshPlayers }) => {
       if (!leftTeamDiv.contains(e.target)) {
         return;
       }
-      console.log("baska player ustunde degil");
       function checkRange(val, min, max) {
         if (val <= min) {
           return min;
@@ -67,9 +64,7 @@ const PlayField = ({ players, refreshPlayers }) => {
           y: y,
         },
       };
-      console.log("x: " + x + "\n\nY: " + y);
 
-      console.log(updatedPlayer);
       const apiCon = new Fetcher();
       apiCon
         .patch("pitch/" + updatedPlayer._id, updatedPlayer)
@@ -80,10 +75,8 @@ const PlayField = ({ players, refreshPlayers }) => {
           setError(err.response.data.error);
         });
     } else {
-      console.log("\n\nbaska player ustunde!!!!");
       // The dropped item is on another player, so swap their positions
       const droppedPlayerId = droppedPlayer.getAttribute("id");
-      console.log(droppedPlayerId);
       const droppedPlayerIndex = players.findIndex(
         (p) => p._id === droppedPlayerId
       );
@@ -107,7 +100,6 @@ const PlayField = ({ players, refreshPlayers }) => {
       updatedPlayers[droppedPlayerIndex] = updatedPlayer;
       updatedPlayers[players.findIndex((p) => p._id === playerId)] =
         updatedDroppedPlayer;
-      console.log(updatedPlayers);
       const apiCon = new Fetcher();
       apiCon
         .patch("pitch/swap-positions", { players: updatedPlayers })

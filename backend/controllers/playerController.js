@@ -33,7 +33,7 @@ const getSinglePlayer = async (req, res) => {
 // Route= api/pitch/
 // Method: POST
 const createPlayer = async (req, res) => {
-  const { name, power } = req.body;
+  const { name, power, number } = req.body;
 
   //Empty field control
   let emptyFields = [];
@@ -55,9 +55,11 @@ const createPlayer = async (req, res) => {
     const player = await playerCollection.create({
       name,
       power,
+      number,
       position: {
         team: "no-team",
       },
+
       user_id,
     });
     res.status(200).json(player);
