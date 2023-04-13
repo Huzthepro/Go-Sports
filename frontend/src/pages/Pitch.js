@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Fetcher from "../helpers/Fetcher";
 
-import PlayerGallery from "../components/PlayerGallery";
+import PlayerWaiting from "../components/PlayerWaiting";
 import AddPlayer from "../components/AddPlayer";
 import PlayField from "../components/PlayField";
 import Spinner from "../components/Spinner";
@@ -38,7 +38,7 @@ const Pitch = () => {
       {error && <div className="error">{error}</div>}
 
       <div className="edit-container">
-        <PlayerGallery players={players} refreshPlayers={refreshPlayers} />
+        <PlayerWaiting players={players} refreshPlayers={refreshPlayers} />
 
         <PlayField players={players} refreshPlayers={refreshPlayers} />
       </div>

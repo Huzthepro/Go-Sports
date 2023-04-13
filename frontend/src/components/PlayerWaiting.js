@@ -2,7 +2,7 @@ import { useState } from "react";
 import Player from "./Player";
 import Fetcher from "../helpers/Fetcher";
 
-const PlayerGallery = ({ players, refreshPlayers }) => {
+const PlayerWaiting = ({ players, refreshPlayers }) => {
   const [error, setError] = useState(null);
   const handleDragOver = (e) => {
     e.preventDefault();
@@ -50,4 +50,4 @@ const PlayerGallery = ({ players, refreshPlayers }) => {
   );
 };
 
-export default PlayerGallery;
+export default PlayerWaiting;

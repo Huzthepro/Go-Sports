@@ -2,14 +2,16 @@ import blueTeam from "../assets/blueTeam.png";
 import redTeam from "../assets/redTeam.png";
 import carry from "../assets/football2.png";
 
-import PlayerMenu from "./PlayerMenu";
+import PlayerCard from "./PlayerCard";
 import { useState } from "react";
 
 const Player = ({ mappedPlayer, team }) => {
-  const [playerMenu, setPlayerMenu] = useState(false);
+  const [playerCard, setPlayerCard] = useState(false);
   const playerClicked = () => {
-    setPlayerMenu(true);
+    playerCard ? setPlayerCard(false) : setPlayerCard(true);
+    console.log("player clicked");
   };
+  console.log(mappedPlayer.name);
   const handleDragStart = (event, mappedPlayerId) => {
     event.dataTransfer.setData("text/plain", mappedPlayerId);
     var img = document.createElement("img");
@@ -55,7 +57,7 @@ const Player = ({ mappedPlayer, team }) => {
       <div className="player-text-container">
         <h4>{mappedPlayer.name} </h4>
       </div>
-      {playerMenu && <PlayerMenu />}
+      {playerCard && <PlayerCard mappedPlayer={mappedPlayer} />}
     </div>
   );
 };
